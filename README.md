@@ -1,6 +1,8 @@
-# my_password
+# My password
 
-A new Flutter application.
+A Flutter application that i am doing to manager my passwords.
+
+Feel free to use or change the code.
 
 ## Getting Started
 
