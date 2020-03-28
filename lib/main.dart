@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_password/module/password/home/features/home/page/home_page.dart';
+import 'package:my_password/module/home/features/home/page/home_page.dart';
 
 void main() => runApp(MyApp());
 

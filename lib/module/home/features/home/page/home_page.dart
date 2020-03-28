@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_password/module/password/home/features/home/page/home_action_button.dart';
+import 'package:my_password/module/home/features/home/page/home_action_button.dart';
 
 class HomePage extends StatelessWidget {
   static const TextStyle _kTitleAppStyle =
