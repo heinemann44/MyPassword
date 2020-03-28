@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_password/module/home/features/home/page/home_action_button.dart';
+import 'package:my_password/module/my_passwords/features/my_passwords_list/page/my_passwords_list_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   static const TextStyle _kTitleAppStyle =
       TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
 
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +35,11 @@ class HomePage extends StatelessWidget {
   Widget _buildAppMessage() {
     return Container(
       color: Colors.green,
-      width: double.infinity,
       height: 150,
       child: Center(
         child: Text(
           "Welcome to My password!",
-          style: _kTitleAppStyle,
+          style: HomePage._kTitleAppStyle,
         ),
       ),
     );
@@ -53,7 +58,11 @@ class HomePage extends StatelessWidget {
   Widget _buildListPasswordButton() {
     return HomeActionButton(
       icon: Icons.list,
-      onTap: () => print("list"),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => MyPasswordListPage(),
+        ),
+      ),
     );
   }
 
