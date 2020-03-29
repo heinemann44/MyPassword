@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_password/module/generate_password/features/generate_password/page/generate_password_page.dart';
 import 'package:my_password/module/home/features/home/page/home_action_button.dart';
 import 'package:my_password/module/my_passwords/features/my_passwords_list/page/my_passwords_list_page.dart';
 
@@ -69,7 +70,11 @@ class _HomePageState extends State<HomePage> {
   Widget _buildGeneratePasswordButton() {
     return HomeActionButton(
       icon: Icons.vpn_key,
-      onTap: () => print("key"),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => GeneratePasswordPage(),
+        ),
+      ),
     );
   }
 }
