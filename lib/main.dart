@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_password/module/home/features/home/page/home_page.dart';
+import 'package:my_password/route/route_generator.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: HomePage(),
+      onGenerateRoute: RouteGenerator().generateRoutes,
     );
   }
 }

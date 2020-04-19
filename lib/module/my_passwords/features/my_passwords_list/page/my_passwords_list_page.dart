@@ -26,7 +26,10 @@ class MyPasswordListPage extends StatelessWidget {
   Widget _buildListPasswords() {
     return ListView.separated(
       itemBuilder: (_, index) => MyPasswordItem(
-        icon: Icon(Icons.insert_emoticon, size: 60,),
+        icon: Icon(
+          Icons.insert_emoticon,
+          size: 60,
+        ),
         name: "Aplication name123: $index",
         password: "123456",
       ),

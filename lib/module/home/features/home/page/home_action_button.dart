@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class HomeActionButton extends StatelessWidget {
-
   final IconData icon;
   final Function onTap;
 
@@ -13,6 +12,7 @@ class HomeActionButton extends StatelessWidget {
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(
             color: Colors.lightGreen,
           ),
@@ -23,6 +23,7 @@ class HomeActionButton extends StatelessWidget {
         iconSize: 60,
         color: Colors.green,
       ),
-    );;
+    );
+    ;
   }
 }
