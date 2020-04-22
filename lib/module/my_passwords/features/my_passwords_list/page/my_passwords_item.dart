@@ -5,15 +5,13 @@ import 'package:my_password/module/my_passwords/features/my_passwords_list/contr
 class MyPasswordItem extends StatefulWidget {
   final Widget icon;
   final double widthIcon;
-  final String name;
-  final String password;
+  final MyPasswordItemController controller;
 
   const MyPasswordItem({
     Key key,
     this.icon,
     this.widthIcon = 50,
-    this.name,
-    this.password,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -21,11 +19,13 @@ class MyPasswordItem extends StatefulWidget {
 }
 
 class _MyPasswordItemState extends State<MyPasswordItem> {
-  MyPasswordItemController _controller = MyPasswordItemController();
+  MyPasswordItemController _controller;
 
   @override
   void initState() {
-    this._controller.visible = false;
+    this._controller = this.widget.controller;
+    this._controller ??= MyPasswordItemController();
+    this._controller.initState();
     super.initState();
   }
 
@@ -55,7 +55,7 @@ class _MyPasswordItemState extends State<MyPasswordItem> {
       children: <Widget>[
         Flexible(
           child: Text(
-            this.widget.name,
+            this._controller.itemPassword.applicationName,
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -69,7 +69,7 @@ class _MyPasswordItemState extends State<MyPasswordItem> {
         Flexible(
           child: Observer(
             builder: (_) => Text(
-              this._controller.visible ? this.widget.password : " * * * * * ",
+              this._controller.showPassword? this._controller.itemPassword.password : " * * * * * ",
             ),
           ),
         ),
@@ -81,7 +81,7 @@ class _MyPasswordItemState extends State<MyPasswordItem> {
     return Observer(
       builder: (_) => IconButton(
         icon: Icon(
-          this._controller.visible ? Icons.visibility : Icons.visibility_off,
+          this._controller.showPassword ? Icons.visibility : Icons.visibility_off,
         ),
         iconSize: 30,
         onPressed: this._controller.changeVisibility,
