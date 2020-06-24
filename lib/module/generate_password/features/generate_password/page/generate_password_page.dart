@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:my_password/module/generate_password/features/generate_password/controller/generate_password_form_controller.dart';
 import 'package:my_password/module/generate_password/features/generate_password/data/repository/repository_service_password.dart';
 import 'package:my_password/module/generate_password/features/generate_password/page/generate_password_form.dart';
 import 'package:my_password/module/my_passwords/features/my_passwords_list/data/item_password.dart';
@@ -12,6 +14,15 @@ class GeneratePasswordPage extends StatefulWidget {
 
 class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
   TextStyle _kPasswordStyle = TextStyle(fontSize: 20);
+  final GeneratePasswordFormController _pageController = GeneratePasswordFormController();
+
+  @override
+  void initState() {
+    super.initState();
+    this._pageController.hasLetters = true;
+    this._pageController.hasSpecialCharacters = true;
+    this._pageController.hasNumbers = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +41,11 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            GeneratePasswordForm(),
+            GeneratePasswordForm(pageController: this._pageController),
             SizedBox(height: 60),
             this._buildTextPasswordGenerated(),
-            FlatButton(
-              child: Text("create table"),
-              onPressed: this._createTable,
-            ),
-            FlatButton(
-              child: Text("insert password"),
-              onPressed: this._createTable,
-            )
+            SizedBox(height: 16),
+            this._buildGeneratePasswordButton(),
           ],
         ),
       ),
@@ -60,11 +65,20 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
           ),
         ),
       ),
-      child: Text(
-        "123121231233213213231e",
-        textAlign: TextAlign.center,
-        style: this._kPasswordStyle,
+      child: Observer(
+        builder: (_) => Text(
+          this._pageController.passwordGenerate ?? "",
+          textAlign: TextAlign.center,
+          style: this._kPasswordStyle,
+        ),
       ),
+    );
+  }
+
+  Widget _buildGeneratePasswordButton(){
+    return FlatButton(
+      child: Text("Generate password"),
+      onPressed: this._pageController.handleOnTapGeneratePassword,
     );
   }
 
@@ -103,7 +117,4 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
     RepositoryServicePassword.add(password);
   }
 
-  void _createTable() async {
-    RepositoryServicePassword.getAll().then(print);
-  }
 }
