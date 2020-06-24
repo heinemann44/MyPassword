@@ -6,13 +6,13 @@ class ListPasswordMock{
   ObservableList<ItemPassword> validList(){
     ObservableList<ItemPassword> list = ObservableList<ItemPassword>();
     list.addAll([
-      ItemPassword(applicationName: "Gmail", password: "12314", showPassword: true, active: true),
-      ItemPassword(applicationName: "Hotmail", password: "222212314", showPassword: true, active: true),
-      ItemPassword(applicationName: "Dota", password: "cabo", showPassword: false, active: true),
-      ItemPassword(applicationName: "Lol", password: "dsd", showPassword: false, active: true),
-      ItemPassword(applicationName: "LUL", password: "fgj", showPassword: false, active: true),
-      ItemPassword(applicationName: "4Head", password: "hgf", showPassword: false, active: true),
-      ItemPassword(applicationName: "Clap", password: "fjh", showPassword: true, active: true),
+      ItemPassword(applicationName: "Gmail", password: "12314", showPassword: true, isDeleted: true),
+      ItemPassword(applicationName: "Hotmail", password: "222212314", showPassword: true, isDeleted: true),
+      ItemPassword(applicationName: "Dota", password: "cabo", showPassword: false, isDeleted: true),
+      ItemPassword(applicationName: "Lol", password: "dsd", showPassword: false, isDeleted: true),
+      ItemPassword(applicationName: "LUL", password: "fgj", showPassword: false, isDeleted: true),
+      ItemPassword(applicationName: "4Head", password: "hgf", showPassword: false, isDeleted: true),
+      ItemPassword(applicationName: "Clap", password: "fjh", showPassword: true, isDeleted: true),
     ]);
 
     return list;

@@ -17,7 +17,7 @@ abstract class _MyPasswordsListPageControllerBase with Store{
 
   @action
   void removeItem(int index){
-    this.listItemPassword[index].active = false;
+    this.listItemPassword[index].isDeleted = true;
     this.listItemPassword.removeAt(index);
   }
 

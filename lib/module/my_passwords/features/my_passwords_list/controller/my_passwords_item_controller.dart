@@ -22,7 +22,7 @@ abstract class _MyPasswordItemControllerBase with Store {
     this.applicationName = this.itemPassword.applicationName;
     this.password = this.itemPassword.password;
     this.showPassword = this.itemPassword.showPassword;
-    this.active = this.itemPassword.active;
+    this.active = !this.itemPassword.isDeleted;
   }
 
   @action
